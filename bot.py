@@ -4,7 +4,7 @@ from datetime import datetime
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes
 
-TOKEN = os.environ.get("TOKEN")
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
 ADMIN_ID = 7195911336  # এখানে তোমার Telegram ID বসাও
 
 # Database
@@ -87,7 +87,7 @@ Status: Pending
     except:
         await update.message.reply_text("Format Error. Example: 2 150")
 
-app = ApplicationBuilder().token(TOKEN).build()
+app = ApplicationBuilder().token(BOT_TOKEN).build()
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CallbackQueryHandler(button))
 app.add_handler(MessageHandler(filters.TEXT, handle_message))
